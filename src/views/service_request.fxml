@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.ServiceRequestController">
+
+    <top>
+        <Label text="📨 Service Requests" style="-fx-font-size: 20px; -fx-padding: 10px;"/>
+    </top>
+
+    <center>
+        <VBox spacing="10.0" padding="10">
+            <ListView fx:id="serviceListView" prefHeight="200"/>
+            <HBox spacing="10">
+                <TextField fx:id="selectedServiceIdField" promptText="Service ID"/>
+                <Button text="Request" onAction="#handleSendRequest"/>
+            </HBox>
+        </VBox>
+    </center>
+
+    <bottom>
+        <VBox spacing="5" padding="10">
+            <Label text="Incoming Requests:"/>
+            <ListView fx:id="incomingRequestsView" prefHeight="100"/>
+            <HBox spacing="10">
+                <TextField fx:id="requestIdField" promptText="Request ID"/>
+                <Button text="Accept" onAction="#handleAcceptRequest"/>
+                <Button text="Reject" onAction="#handleRejectRequest"/>
+            </HBox>
+        </VBox>
+    </bottom>
+
+</BorderPane>

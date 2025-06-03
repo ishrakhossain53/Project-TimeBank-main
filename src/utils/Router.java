@@ -25,10 +25,17 @@ public class Router {
     }
 
     public static void goTo(String fxmlPath, String title) throws Exception {
-        FXMLLoader loader = new FXMLLoader(Router.class.getClassLoader().getResource(fxmlPath));
-        Scene scene = new Scene(loader.load());
+        if (primaryStage == null) {
+            throw new IllegalStateException("Primary stage not set. Call Router.setPrimaryStage() first.");
+        }
 
-        // Inject services if controller implements a setup method
+        if (Router.class.getClassLoader().getResource(fxmlPath) == null) {
+            throw new IllegalArgumentException("FXML file not found: " + fxmlPath);
+        }
+
+        FXMLLoader loader = new FXMLLoader(Router.class.getClassLoader().getResource(fxmlPath));
+        Scene scene = new Scene(loader.load());  // or add default size if needed
+
         Object controller = loader.getController();
         if (controller instanceof InitializableWithServices) {
             ((InitializableWithServices) controller).initializeServices(authService, serviceManager, requestManager);

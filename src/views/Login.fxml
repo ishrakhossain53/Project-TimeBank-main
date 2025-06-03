@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.LoginController"
+            prefWidth="400" prefHeight="300">
+
+    <VBox spacing="12" alignment="CENTER" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50"
+          AnchorPane.topAnchor="50" AnchorPane.bottomAnchor="50">
+
+        <Label text="🔐 Login to Time Bank" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+        <TextField fx:id="emailField" promptText="Email Address" maxWidth="250"/>
+
+        <PasswordField fx:id="passwordField" promptText="Password" maxWidth="250"/>
+
+        <Button text="Login" onAction="#handleLogin" maxWidth="100"/>
+
+        <Label fx:id="messageLabel" textFill="red" wrapText="true" maxWidth="300"/>
+    </VBox>
+</AnchorPane>
